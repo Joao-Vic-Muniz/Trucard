@@ -70,17 +70,6 @@ export default function RegrasPaulista() {
     },
   ];
 
-  const scoreRows = [
-    { label: "Mão normal", pts: "1" },
-    { label: "Truco", pts: "3" },
-    { label: "Seis", pts: "6" },
-    { label: "Nove", pts: "9" },
-    { label: "Doze", pts: "12" },
-    { label: "Envido simples", pts: "1" },
-    { label: "Envido real", pts: "2" },
-    { label: "Fuga do truco", pts: "1†" },
-  ];
-
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -160,6 +149,7 @@ export default function RegrasPaulista() {
               <span className="flex items-center justify-center w-9 h-9 rounded-xl text-base shrink-0 bg-accent/15 border border-accent/25">
                 {sec.icon}
               </span>
+
               <h2 className="font-title text-title text-sm md:text-base font-semibold">
                 {sec.title}
               </h2>
@@ -178,6 +168,7 @@ export default function RegrasPaulista() {
                     <span className="font-title text-xs font-bold px-2 py-0.5 rounded-lg bg-accent/[0.18] text-accent border border-accent/30">
                       {s.pts}pt{parseInt(s.pts) > 1 ? "s" : ""}
                     </span>
+
                     <span className="font-text text-text/70 text-xs">
                       {s.label}
                     </span>
@@ -196,10 +187,12 @@ export default function RegrasPaulista() {
                     <span className="font-title text-accent text-xs font-black w-4 text-center">
                       {card.rank}
                     </span>
+
                     <div>
                       <p className="font-title text-title text-xs font-semibold">
                         {card.name}
                       </p>
+
                       <p className="font-text text-text/55 text-[10px]">
                         {card.desc}
                       </p>
