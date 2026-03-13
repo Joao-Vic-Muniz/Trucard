@@ -1,23 +1,45 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { name: "Home", href: "#home" },
-    { name: "Regras", href: "#regras" },
-    { name: "Truco Paulista", href: "#paulista" },
-    { name: "Truco Mineiro", href: "#mineiro" },
-    { name: "Sinais", href: "#sinais" },
+    { name: "Home", href: "home" },
+    { name: "Regras", href: "regras" },
+    { name: "Truco Paulista", href: "paulista" },
+    { name: "Truco Mineiro", href: "mineiro" },
+    { name: "Sinais", href: "sinais" },
   ];
+
+function scrollToSection(id: string) {
+  const element = document.getElementById(id);
+
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
+  setOpen(false);
+}
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full h-16 z-50 border-b border-white/[0.07] bg-[#080810]/90 backdrop-blur-xl shadow-[0_1px_40px_rgba(0,0,0,0.5)]">
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="fixed top-0 left-0 w-full h-16 z-50 border-b border-white/[0.07] bg-[#080810]/90 backdrop-blur-xl shadow-[0_1px_40px_rgba(0,0,0,0.5)]"
+      >
         <div className="relative w-full h-full px-4 md:px-8 flex items-center justify-between">
 
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-0.5 group">
+          <button
+            onClick={() => scrollToSection("home")}
+            className="flex items-center gap-0.5"
+          >
             <span className="font-title text-2xl tracking-wide text-title">
               Tru
             </span>
@@ -25,19 +47,18 @@ export default function Navbar() {
               card
             </span>
             <span className="w-1.5 h-1.5 rounded-full bg-accent opacity-70 ml-1 mt-1" />
-          </a>
+          </button>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1 font-text">
             {links.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                className="relative px-3 py-1.5 text-[14px] tracking-wide rounded-lg text-text/80 hover:text-title hover:bg-white/5 transition-all duration-300 group"
+                onClick={() => scrollToSection(link.href)}
+                className="relative px-3 py-1.5 text-[14px] tracking-wide rounded-lg text-text/80 hover:text-title hover:bg-white/5 transition-all duration-300"
               >
                 {link.name}
-                <span className="absolute bottom-0.5 left-3 right-3 h-px rounded-full bg-accent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-              </a>
+              </button>
             ))}
           </nav>
 
@@ -45,7 +66,6 @@ export default function Navbar() {
           <button
             onClick={() => setOpen(true)}
             className="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8"
-            aria-label="Abrir menu"
           >
             <span className="block w-full h-px rounded-full bg-title" />
             <span className="block w-3/5 h-px rounded-full bg-title ml-auto" />
@@ -53,58 +73,56 @@ export default function Navbar() {
           </button>
 
         </div>
-      </header>
+      </motion.header>
 
       {/* Backdrop */}
-      <div
-        onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-40 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
-          open ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
-      />
-
-      {/* Mobile drawer */}
-      <aside
-        className={`fixed top-0 right-0 h-full w-4/5 max-w-xs z-50 flex flex-col
-          bg-[#100e1c] border-l border-white/[0.07] shadow-[-8px_0_60px_rgba(0,0,0,0.6)]
-          transform transition-transform duration-300
-          ${open ? "translate-x-0" : "translate-x-full"}`}
-      >
-        {/* Drawer header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.06]">
-          <span className="font-title text-xl tracking-wide text-title">
-            Tru<span className="text-accent">card</span>
-          </span>
-          <button
+      <AnimatePresence>
+        {open && (
+          <motion.div
             onClick={() => setOpen(false)}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-text bg-white/5 border border-white/[0.08] hover:border-accent/40 hover:text-accent transition-all duration-200"
-            aria-label="Fechar menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.aside
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 right-0 h-full w-4/5 max-w-xs z-50 flex flex-col bg-[#100e1c]"
           >
-            ✕
-          </button>
-        </div>
+            <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.06]">
+              <span className="font-title text-xl text-title">
+                Tru<span className="text-accent">card</span>
+              </span>
 
-        {/* Links */}
-        <nav className="flex flex-col p-4 gap-1 flex-1">
-          {links.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="flex items-center px-4 py-3 rounded-xl font-text text-base text-text/80 hover:text-title hover:bg-accent/10 border-l-2 border-transparent hover:border-accent transition-all duration-200"
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
+              <button onClick={() => setOpen(false)}>✕</button>
+            </div>
 
-        {/* Drawer footer */}
-        <div className="px-6 py-4 border-t border-white/[0.05]">
-          <p className="font-text text-xs text-text/40">
-            O melhor guia de Truco do Brasil
-          </p>
-        </div>
-      </aside>
+            <nav className="flex flex-col p-4 gap-2">
+              {links.map((link, i) => (
+                <motion.button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.08 }}
+                  className="text-left px-4 py-3 rounded-xl text-text/80 hover:text-title hover:bg-accent/10"
+                >
+                  {link.name}
+                </motion.button>
+              ))}
+            </nav>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </>
   );
 }
