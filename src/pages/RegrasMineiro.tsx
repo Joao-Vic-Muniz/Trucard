@@ -1,53 +1,57 @@
 import { motion } from "framer-motion";
 
-export default function RegrasPaulista() {
+export default function RegrasMineiro() {
   const sections = [
     {
       icon: "🃏",
       title: "O Baralho",
       content:
-        "O Truco Paulista usa um baralho de 40 cartas — sem os 8s, 9s, 10s e coringas. As 4 manilhas variam a cada rodada conforme a vira.",
+        "O Truco Mineiro usa um baralho de 40 cartas — sem os 8s, 9s, 10s e coringas. Diferente do Truco Paulista, não existe vira e as manilhas são fixas.",
     },
     {
       icon: "👥",
       title: "Jogadores e Objetivo",
       content:
-        "Disputado por 2 jogadores ou 2 duplas. Vence quem chegar primeiro a 12 pontos acumulando vitórias nas mãos.",
+        "Normalmente jogado em duplas (2 contra 2), mas também pode ser 1 contra 1. O objetivo é somar 12 pontos vencendo as mãos.",
     },
     {
-      icon: "🔄",
-      title: "A Vira e as Manilhas",
+      icon: "⭐",
+      title: "Manilhas Fixas",
       content:
-        "A carta virada define as manilhas: a carta imediatamente superior à vira se torna manilha. Hierarquia: Zap (♣3), Copas (♥3), Espadilha (♠7), Ouros (♦7).",
+        "No Truco Mineiro as manilhas não mudam. A ordem é: Zap (4♣), Copas (7♥), Espadilha (A♠) e Ouros (7♦).",
     },
     {
       icon: "🎯",
       title: "Rodadas",
       content:
-        "Cada mão tem até 3 rodadas. Quem jogar a carta mais alta vence. Vence a mão quem ganhar 2 das 3 rodadas. Empates consecutivos: mão vale 1 ponto para cada lado.",
+        "Cada mão possui até 3 rodadas. Cada jogador joga uma carta por rodada. Quem vencer duas rodadas ganha a mão.",
     },
     {
       icon: "🏆",
       title: "Hierarquia das Cartas",
       content: null,
       cards: [
-        { rank: "1", name: "Zap", desc: "3♣ — o mais forte" },
-        { rank: "2", name: "Copas", desc: "3♥" },
-        { rank: "3", name: "Espadilha", desc: "7♠" },
+        { rank: "1", name: "Zap", desc: "4♣ — carta mais forte" },
+        { rank: "2", name: "Copas", desc: "7♥" },
+        { rank: "3", name: "Espadilha", desc: "A♠" },
         { rank: "4", name: "Ouros", desc: "7♦" },
-        { rank: "5", name: "Três", desc: "outros naipes" },
-        { rank: "6", name: "Dois", desc: "qualquer naipe" },
-        { rank: "7", name: "Ás", desc: "qualquer naipe" },
-        { rank: "8", name: "Rei → Valete", desc: "K, J" },
-        { rank: "9", name: "Dama", desc: "Q" },
-        { rank: "10", name: "7 → 4", desc: "maior pro menor" },
+        { rank: "5", name: "Três", desc: "todos os naipes" },
+        { rank: "6", name: "Dois", desc: "todos os naipes" },
+        { rank: "7", name: "Ás", desc: "outros naipes" },
+        { rank: "8", name: "Rei", desc: "K" },
+        { rank: "9", name: "Valete", desc: "J" },
+        { rank: "10", name: "Dama", desc: "Q" },
+        { rank: "11", name: "Sete", desc: "exceto ♥ e ♦" },
+        { rank: "12", name: "Seis", desc: "todos os naipes" },
+        { rank: "13", name: "Cinco", desc: "todos os naipes" },
+        { rank: "14", name: "Quatro", desc: "exceto ♣ — carta mais fraca" },
       ],
     },
     {
       icon: "📢",
       title: "O Truco",
       content:
-        'Qualquer jogador pode pedir "Truco" antes de jogar, elevando o valor da mão. O adversário aceita, foge (1 pt ao oponente) ou aumenta.',
+        'Qualquer jogador pode pedir "Truco" antes de jogar uma carta. O adversário pode aceitar, correr ou aumentar a aposta.',
       scale: [
         { label: "Normal", pts: "1" },
         { label: "Truco", pts: "3" },
@@ -60,13 +64,13 @@ export default function RegrasPaulista() {
       icon: "✊",
       title: "Mão de Ferro",
       content:
-        "Quando os dois times têm 11 pontos, ninguém pode ver as próprias cartas. A rodada decide o jogo.",
+        "Quando as duas duplas chegam a 11 pontos acontece a mão de ferro. Os jogadores não podem olhar suas cartas e a mão decide a partida.",
     },
     {
       icon: "⚡",
       title: "Mão de 11",
       content:
-        "Com 11 pontos, a dupla pode ver as cartas do parceiro e decidir: jogar (3 pts) ou correr (1 pt ao adversário).",
+        "Quando uma dupla chega a 11 pontos, os dois jogadores podem olhar as cartas um do outro e decidir se jogam a mão ou se correm. Se correrem, o adversário ganha 1 ponto.",
     },
   ];
 
@@ -90,10 +94,10 @@ export default function RegrasPaulista() {
 
   return (
     <section
-      id="regras"
+      id="mineiro"
       className="relative min-h-screen mt-16 px-4 py-12 overflow-hidden bg-[#080810]"
     >
-      {/* Glow animado */}
+      {/* Glow */}
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity }}
@@ -121,12 +125,12 @@ export default function RegrasPaulista() {
         <h1 className="font-title text-title text-4xl sm:text-5xl md:text-6xl leading-tight mb-5">
           Regras do{" "}
           <span className="relative inline-block text-accent">
-            Truco Paulista
+            Truco Mineiro
           </span>
         </h1>
 
         <p className="font-text text-text/75 text-base sm:text-lg max-w-xl mx-auto">
-          Tudo que você precisa para dominar a versão mais popular do Truco no Brasil.
+          Conheça as regras da versão tradicional jogada em Minas Gerais.
         </p>
       </motion.div>
 
@@ -166,7 +170,7 @@ export default function RegrasPaulista() {
                 {sec.scale.map((s, j) => (
                   <div key={j} className="flex items-center gap-1.5">
                     <span className="font-title text-xs font-bold px-2 py-0.5 rounded-lg bg-accent/[0.18] text-accent border border-accent/30">
-                      {s.pts}pt{parseInt(s.pts) > 1 ? "s" : ""}
+                      {s.pts}pts
                     </span>
 
                     <span className="font-text text-text/70 text-xs">
@@ -204,27 +208,6 @@ export default function RegrasPaulista() {
           </motion.div>
         ))}
       </motion.div>
-
-      {/* Navegação */}
-      <div className="relative max-w-5xl mx-auto mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <motion.a
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.95 }}
-          href="#home"
-          className="text-center px-8 py-3 rounded-xl font-text font-medium bg-white/[0.04] border border-white/[0.1] text-title hover:border-accent/50 hover:text-accent hover:bg-accent/10 transition-all duration-300"
-        >
-          ← Voltar ao Início
-        </motion.a>
-
-        <motion.a
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.95 }}
-          href="#mineiro"
-          className="text-white text-center px-8 py-3 rounded-xl font-text font-medium bg-accent hover:bg-accentSecondary shadow-[0_4px_24px_rgba(180,30,30,0.35)] transition-all duration-300"
-        >
-          Ver Truco Mineiro →
-        </motion.a>
-      </div>
     </section>
   );
 }
