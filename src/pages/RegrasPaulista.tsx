@@ -91,22 +91,16 @@ export default function RegrasPaulista() {
   return (
     <section
       id="regras"
-      className="relative min-h-screen mt-16 px-4 py-12 overflow-hidden bg-[#080810]"
+      className="relative min-h-screen px-4 py-12 overflow-hidden bg-[#080810]"
     >
       {/* Glow animado */}
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity }}
-        className="pointer-events-none absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-accent/25 blur-[120px]"
+        className="pointer-events-none absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-white/5 blur-[120px]"
       />
 
-      <motion.div
-        animate={{ scale: [1, 1.15, 1] }}
-        transition={{ duration: 10, repeat: Infinity }}
-        className="pointer-events-none absolute bottom-10 -right-24 w-96 h-96 rounded-full bg-accent/15 blur-[100px]"
-      />
-
-      {/* Header */}
+      {/* Header atualizado sem o risco/badge verde */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -114,18 +108,11 @@ export default function RegrasPaulista() {
         viewport={{ once: true }}
         className="relative max-w-5xl mx-auto mb-14 text-center"
       >
-        <span className="inline-block font-text text-xs font-bold uppercase tracking-[0.3em] mb-4 px-4 py-1.5 rounded-full border border-accent/40 bg-accent/10 text-accent">
-          Guia Completo
-        </span>
-
         <h1 className="font-title text-title text-4xl sm:text-5xl md:text-6xl leading-tight mb-5">
-          Regras do{" "}
-          <span className="relative inline-block text-accent">
-            Truco Paulista
-          </span>
+          Regras do <span className="text-white">Truco Paulista</span>
         </h1>
 
-        <p className="font-text text-text/75 text-base sm:text-lg max-w-xl mx-auto">
+        <p className="font-text text-text/75 text-base sm:text-lg max-w-xl mx-auto border-t border-white/10 pt-6">
           Tudo que você precisa para dominar a versão mais popular do Truco no Brasil.
         </p>
       </motion.div>
@@ -146,7 +133,7 @@ export default function RegrasPaulista() {
             className="break-inside-avoid mb-4 group relative rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-5 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.4)] transition-all duration-300"
           >
             <div className="flex items-center gap-3 mb-3">
-              <span className="flex items-center justify-center w-9 h-9 rounded-xl text-base shrink-0 bg-accent/15 border border-accent/25">
+              <span className="flex items-center justify-center w-9 h-9 rounded-xl text-base shrink-0 bg-white/5 border border-white/10">
                 {sec.icon}
               </span>
 
@@ -165,7 +152,7 @@ export default function RegrasPaulista() {
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 mt-3">
                 {sec.scale.map((s, j) => (
                   <div key={j} className="flex items-center gap-1.5">
-                    <span className="font-title text-xs font-bold px-2 py-0.5 rounded-lg bg-accent/[0.18] text-accent border border-accent/30">
+                    <span className="font-title text-xs font-bold px-2 py-0.5 rounded-lg bg-white/10 text-title border border-white/10">
                       {s.pts}pt{parseInt(s.pts) > 1 ? "s" : ""}
                     </span>
 
@@ -184,7 +171,7 @@ export default function RegrasPaulista() {
                     key={j}
                     className="flex items-center gap-2 rounded-xl px-2.5 py-1.5 bg-white/[0.035] border border-white/[0.05]"
                   >
-                    <span className="font-title text-accent text-xs font-black w-4 text-center">
+                    <span className="font-title text-white text-xs font-black w-4 text-center">
                       {card.rank}
                     </span>
 
@@ -211,7 +198,7 @@ export default function RegrasPaulista() {
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           href="#home"
-          className="text-center px-8 py-3 rounded-xl font-text font-medium bg-white/[0.04] border border-white/[0.1] text-title hover:border-accent/50 hover:text-accent hover:bg-accent/10 transition-all duration-300"
+          className="text-center px-8 py-3 rounded-xl font-text font-medium bg-white/[0.04] border border-white/[0.1] text-title hover:border-white/20 hover:bg-white/5 transition-all duration-300"
         >
           ← Voltar ao Início
         </motion.a>
@@ -220,7 +207,7 @@ export default function RegrasPaulista() {
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           href="#mineiro"
-          className="text-white text-center px-8 py-3 rounded-xl font-text font-medium bg-accent hover:bg-accentSecondary shadow-[0_4px_24px_rgba(180,30,30,0.35)] transition-all duration-300"
+          className="text-white text-center px-8 py-3 rounded-xl font-text font-medium bg-white/10 border border-white/10 hover:bg-white/20 transition-all duration-300"
         >
           Ver Truco Mineiro →
         </motion.a>
