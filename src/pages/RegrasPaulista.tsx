@@ -93,14 +93,20 @@ export default function RegrasPaulista() {
       id="regras"
       className="relative min-h-screen px-4 py-12 overflow-hidden bg-[#080810]"
     >
-      {/* Glow animado */}
+      {/* Glow animado - Agora em tons de branco para evitar o verde */}
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity }}
         className="pointer-events-none absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-white/5 blur-[120px]"
       />
 
-      {/* Header atualizado sem o risco/badge verde */}
+      <motion.div
+        animate={{ scale: [1, 1.15, 1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        className="pointer-events-none absolute bottom-10 -right-24 w-96 h-96 rounded-full bg-white/5 blur-[100px]"
+      />
+
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

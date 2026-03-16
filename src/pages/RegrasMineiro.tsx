@@ -44,14 +44,14 @@ export default function RegrasMineiro() {
         { rank: "11", name: "Sete", desc: "exceto ♥ e ♦" },
         { rank: "12", name: "Seis", desc: "todos os naipes" },
         { rank: "13", name: "Cinco", desc: "todos os naipes" },
-        { rank: "14", name: "Quatro", desc: "exceto ♣ — carta mais fraca" },
+        { rank: "14", name: "Quatro", desc: "exceto ♣ — fraca" },
       ],
     },
     {
       icon: "📢",
       title: "O Truco",
       content:
-        'Qualquer jogador pode pedir "Truco" antes de jogar uma carta. O adversário pode aceitar, correr ou aumentar a aposta.',
+        'Qualquer jogador pode pedir "Truco" antes de jogar. O adversário pode aceitar, correr ou aumentar.',
       scale: [
         { label: "Normal", pts: "1" },
         { label: "Truco", pts: "3" },
@@ -64,13 +64,13 @@ export default function RegrasMineiro() {
       icon: "✊",
       title: "Mão de Ferro",
       content:
-        "Quando as duas duplas chegam a 11 pontos acontece a mão de ferro. Os jogadores não podem olhar suas cartas e a mão decide a partida.",
+        "Quando as duas duplas chegam a 11 pontos acontece a mão de ferro. A mão decide a partida.",
     },
     {
       icon: "⚡",
       title: "Mão de 11",
       content:
-        "Quando uma dupla chega a 11 pontos, os dois jogadores podem olhar as cartas um do outro e decidir se jogam a mão ou se correm. Se correrem, o adversário ganha 1 ponto.",
+        "Com 11 pontos, a dupla olha as cartas um do outro e decide se joga ou corre.",
     },
   ];
 
@@ -95,19 +95,13 @@ export default function RegrasMineiro() {
   return (
     <section
       id="mineiro"
-      className="relative min-h-screen mt-16 px-4 py-12 overflow-hidden bg-[#080810]"
+      className="relative min-h-screen px-4 py-12 overflow-hidden bg-[#080810]"
     >
-      {/* Glow */}
+      {/* Glow animado sutil */}
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity }}
-        className="pointer-events-none absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-accent/25 blur-[120px]"
-      />
-
-      <motion.div
-        animate={{ scale: [1, 1.15, 1] }}
-        transition={{ duration: 10, repeat: Infinity }}
-        className="pointer-events-none absolute bottom-10 -right-24 w-96 h-96 rounded-full bg-accent/15 blur-[100px]"
+        className="pointer-events-none absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-white/5 blur-[120px]"
       />
 
       {/* Header */}
@@ -118,18 +112,11 @@ export default function RegrasMineiro() {
         viewport={{ once: true }}
         className="relative max-w-5xl mx-auto mb-14 text-center"
       >
-        <span className="inline-block font-text text-xs font-bold uppercase tracking-[0.3em] mb-4 px-4 py-1.5 rounded-full border border-accent/40 bg-accent/10 text-accent">
-          Guia Completo
-        </span>
-
         <h1 className="font-title text-title text-4xl sm:text-5xl md:text-6xl leading-tight mb-5">
-          Regras do{" "}
-          <span className="relative inline-block text-accent">
-            Truco Mineiro
-          </span>
+          Regras do <span className="text-white">Truco Mineiro</span>
         </h1>
 
-        <p className="font-text text-text/75 text-base sm:text-lg max-w-xl mx-auto">
+        <p className="font-text text-text/75 text-base sm:text-lg max-w-xl mx-auto border-t border-white/10 pt-6">
           Conheça as regras da versão tradicional jogada em Minas Gerais.
         </p>
       </motion.div>
@@ -146,11 +133,10 @@ export default function RegrasMineiro() {
           <motion.div
             key={i}
             variants={item}
-            whileHover={{ y: -6 }}
-            className="break-inside-avoid mb-4 group relative rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-5 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.4)] transition-all duration-300"
+            className="break-inside-avoid mb-4 group relative rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-5 backdrop-blur-xl shadow-lg transition-all duration-300"
           >
             <div className="flex items-center gap-3 mb-3">
-              <span className="flex items-center justify-center w-9 h-9 rounded-xl text-base shrink-0 bg-accent/15 border border-accent/25">
+              <span className="flex items-center justify-center w-9 h-9 rounded-xl text-base bg-white/5 border border-white/10">
                 {sec.icon}
               </span>
 
@@ -169,7 +155,7 @@ export default function RegrasMineiro() {
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 mt-3">
                 {sec.scale.map((s, j) => (
                   <div key={j} className="flex items-center gap-1.5">
-                    <span className="font-title text-xs font-bold px-2 py-0.5 rounded-lg bg-accent/[0.18] text-accent border border-accent/30">
+                    <span className="font-title text-xs font-bold px-2 py-0.5 rounded-lg bg-white/10 text-title border border-white/10">
                       {s.pts}pts
                     </span>
 
@@ -188,7 +174,7 @@ export default function RegrasMineiro() {
                     key={j}
                     className="flex items-center gap-2 rounded-xl px-2.5 py-1.5 bg-white/[0.035] border border-white/[0.05]"
                   >
-                    <span className="font-title text-accent text-xs font-black w-4 text-center">
+                    <span className="font-title text-white text-xs font-black w-4 text-center">
                       {card.rank}
                     </span>
 

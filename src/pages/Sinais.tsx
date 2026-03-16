@@ -158,23 +158,19 @@ export default function Signals() {
   return (
     <section
       id="sinais"
-      className="relative min-h-screen mt-16 px-4 py-16 bg-[#080810] overflow-hidden"
+      className="relative min-h-screen px-4 py-16 bg-[#080810] overflow-hidden"
     >
-      {/* Glow de fundo */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-accent/25 blur-[120px] rounded-full" />
-      <div className="absolute bottom-10 -right-24 w-96 h-96 bg-accent/15 blur-[100px] rounded-full" />
+      {/* Glow de fundo - Ajustado para branco sutil */}
+      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full" />
+      <div className="absolute bottom-10 -right-24 w-96 h-96 bg-white/5 blur-[100px] rounded-full" />
 
-      {/* Header */}
+      {/* Header - Limpo e sem badge verde */}
       <div className="max-w-4xl mx-auto text-center mb-14">
-        <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] mb-4 px-4 py-1.5 rounded-full border border-accent/40 bg-accent/10 text-accent">
-          Comunicação
-        </span>
-
         <h2 className="font-title text-4xl sm:text-5xl text-title mb-4">
-          Sinais do Truco
+          Sinais do <span className="text-white">Truco</span>
         </h2>
 
-        <p className="text-text/70 max-w-xl mx-auto">
+        <p className="font-text text-text/70 max-w-xl mx-auto border-t border-white/10 pt-6">
           Durante a partida, parceiros usam sinais discretos para indicar suas
           cartas sem que os adversários percebam.
         </p>
@@ -188,8 +184,9 @@ export default function Signals() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -6 }}
-            transition={{ delay: index * 0.15 }}
-            className="rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-6 text-center shadow-lg"
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-6 text-center shadow-lg transition-all duration-300"
           >
             <div className="flex justify-center mb-4">
               <Face type={signal.type} />

@@ -6,7 +6,7 @@ import Sinais from "./pages/Sinais"
 
 export default function App() {
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-[#080810] min-h-screen">
       <Navbar />
       <Home />
       <RegrasPaulista />
